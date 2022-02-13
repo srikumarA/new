@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>CSI Hall of Fame</title>
+</head>
+
+<body>
+    <!-- Year scroller -->
+    <div class="container" id="holder">
+        <hr id="bar">
+        <div class="d-flex justify-content-between flex-nowrap align-items-baseline">
+            <button class="btn btn-primary rounded-0" id="yearleftbtn"><i class="fa fa-angle-left"></i></button>
+        <div class="d-flex justify-content-between flex-nowrap align-items-baseline" id="btns">
+            <button class="btn btn-outline-secondary year disappear">2018</button>
+            <button class="btn btn-outline-secondary year">2019</button>
+            <button class="btn btn-outline-secondary activeyear" id="activeyear">2020</button>
+            <button class="btn btn-outline-secondary year">2021</button>
+            <button class="btn btn-outline-secondary year disappear">2022</button></div>
+            <button class="btn btn-primary rounded-0" id="yearrightbtn"><i class="fa fa-angle-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Important people -->
+    <div class="container">
+        <div class="row" id="heads">
+            <div class="col-lg-2 col-sm-4 col-6">Something</div>
+            <div class="col-lg-2 col-sm-4 col-6">Something</div>
+            <div class="col-lg-2 col-sm-4 col-6">Something</div>
+        </div>
+    </div>
+
+    <!-- Leads -->
+    <div class="container text-center">
+        <h4><span class="badge badge-secondary">Leads</span></h4>
+    </div>
+    <div class="container myHeading">
+        <div class="row" id="leads">
+            <!-- Element -->
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+        </div>
+    </div>
+
+    <!-- Team members -->
+    <div class="container text-center">
+        <h4><span class="badge badge-secondary">Team Members</span></h4>
+    </div>
+    <div class="container">
+        <div class="row" id="members">
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+            <div class="col-lg-2 col-sm-3 col-4">Something</div>
+        </div>
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-analytics.js";
+ // TODO: Add SDKs for Firebase products that you want to use
+ // https://firebase.google.com/docs/web/setup#available-libraries
+
+ // Your web app's Firebase configuration
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ const firebaseConfig = {
+   apiKey: "AIzaSyDF6sFD8rMROvJBvYp4kkuiGJUzImRQ8Q8",
+   authDomain: "demo1-f1356.firebaseapp.com",
+   databaseURL: "https://demo1-f1356-default-rtdb.firebaseio.com",
+   projectId: "demo1-f1356",
+   storageBucket: "demo1-f1356.appspot.com",
+   messagingSenderId: "235771225484",
+   appId: "1:235771225484:web:3e2c88fe0282766dd162a9",
+   measurementId: "G-QNF5PRLY77"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ const analytics = getAnalytics(app);
+
+ import{getDatabase,ref,get,set,child,update,remove} from "https://www.gstatic.com/firebasejs/9.6.5/firebase-database.js";
+ import{getStorage,ref as sRef,getDownloadURL,uploadBytesResumable} from "https://www.gstatic.com/firebasejs/9.6.5/firebase-storage.js";
+ const db=getDatabase();
+ 
+//inital value
+var currentyear=2020;
+ //insert function
+ function insertInto(name,year,regd_no,email,department,position,git,linkedin_id){
+     set(ref(db,"/"+year+"/"+regd_no+"/"),{
+         Name:name,
+         Year:year,
+         Email:email,
+         Department:department,
+         Reg_no:regd_no,
+         Position:position,
+         GitHub_id:git,
+         Linkedin_id:linkedin_id,
+         })};
+
+                    
+                   
+
+//update
+function Update(name,year,regd_no,email,department,position,git,linkedin_id){
+     update(ref(db,"/"+year+"/"+regd_no+"/"),{
+         Name:name,
+         Email:email,
+         Department:department,
+         Position:position,
+         GitHub_id:git,
+         Linkedin_id:linkedin_id,
+
+     })};
+//Update("astroboy","2020","20BCE6775","fake.@gmail.com","All","President","fdvfd","edfvv")
+
+
+ //delete operation
+ function Delete(year,reg_no){
+     remove(ref(db,"/"+year+"/"+regd_no+"/"));}
+
+
+//delbtn.addEventListener('click',Delete)
+var btnsDOM=document.querySelector("#btns");
+var peopleDOM=document.querySelector("#heads");
+var peopleDOM2=document.querySelector("#leads");
+var peopleDOM3=document.querySelector("#members");  
+//retrieval operation
+
+    
+//displaying according to year 
+function getall(currentyear){
+    const dbref=ref(db);
+    get(child(dbref,""+currentyear+""))
+    .then((snapshot)=>{
+        var people=[];
+        snapshot.forEach(childsnapshot =>{
+            people.push(childsnapshot.val());
+        });
+    
+    display(people)
+    })
+}
+function display(people){
+    let result1="";
+    let result2="";
+    let result3="";
+    people.forEach(person =>{
+        if (person.Position=="President"||person.Position=="Vice President"||person.Position=="advisor"){
+            result1+=`<!-- Important Element -->
+            <div class="col-lg-2 col-md-4 col-sm-4 col-6 d-flex justify-content-center" id=${person.Position}> 
+            <img class="myPicImp" src="${person.Photo}">
+            <div class="myTileBackImp d-flex flex-column justify-content-between">
+                <div class="d-flex justify-content-center">
+                    <a href=""><i class="fa fa-address-card-o"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                    <a href=""><i class="fa fa-github"></i></a>
+                </div>
+            <div class="text-center">
+                <span class="myName">${person.Name}</span>
+                <span class="myPosition">${person.Position}</span>
+            </div>
+            </div>
+            </div>`;
+            peopleDOM.innerHTML=result1;}
+        else if (person.Position=="lead"){
+            result2+=` <!-- Element -->
+            <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center">
+                <img class="myPic" src="${person.Photo}">
+                <div class="myTileBack d-flex flex-column justify-content-between">
+                    <div class="d-flex justify-content-center">
+                        <a href=""><i class="fa fa-address-card-o"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                        <a href=""><i class="fa fa-github"></i></a>
+                    </div>
+                    <div class="text-center">
+                        <span class="myName">${person.Name}</span>
+                        <span class="myPosition">${person.Department}</span>
+                    </div>
+                </div>
+            </div>`;
+            peopleDOM2.innerHTML=result2;
+        }
+        else if(person.Position=="member"){
+            result3+=` <!-- Element -->
+            <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center">
+                <img class="myPic" src="${person.Photo}">
+                <div class="myTileBack d-flex flex-column justify-content-between">
+                    <div class="d-flex justify-content-center">
+                        <a href=""><i class="fa fa-address-card-o"></i></a>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                        <a href=""><i class="fa fa-github"></i></a>
+                    </div>
+                    <div class="text-center">
+                        <span class="myName">${person.Name}</span>
+                        <span class="myPosition">${person.Department}</span>
+                    </div>
+                </div>
+            </div>`;
+            peopleDOM3.innerHTML=result3;
+        }
+        
+    })
+
+}
+function clearcontent(id1,id2,id3){
+    document.getElementById(id1).innerHTML="";
+    document.getElementById(id2).innerHTML="";
+    document.getElementById(id3).innerHTML="";
+
+}
+window.onload=getall(2020);
+//button functions
+var yearrightbtn=document.getElementById("yearrightbtn");
+function yearright(){
+    currentyear++;
+    btnsDOM.innerHTML=`<button class="btn btn-outline-secondary year disappear">2018</button>
+            <button class="btn btn-outline-secondary year">${currentyear-1}</button>
+            <button class="btn btn-outline-secondary activeyear" id="activeyear">${currentyear}</button>
+            <button class="btn btn-outline-secondary year">${currentyear+1}</button>
+            <button class="btn btn-outline-secondary year disappear">${currentyear+2}</button>`;
+    getall(currentyear);
+};
+var yearleftbtn=document.getElementById("yearleftbtn");
+function yearleft(){
+    currentyear--;
+    btnsDOM.innerHTML=`<button class="btn btn-outline-secondary year disappear">2018</button>
+            <button class="btn btn-outline-secondary year">${currentyear-1}</button>
+            <button class="btn btn-outline-secondary activeyear" id="activeyear">${currentyear}</button>
+            <button class="btn btn-outline-secondary year">${currentyear+1}</button>
+            <button class="btn btn-outline-secondary year disappear">${currentyear+2}</button>`;
+    getall(currentyear);
+};
+yearrightbtn.addEventListener('click',()=>{
+    clearcontent('heads','leads','members');
+    yearright();
+})
+yearleftbtn.addEventListener('click',()=>{
+    clearcontent('heads','leads','members')
+    yearleft();
+
+});
+  
+</script>
+</body>
+</html>
