@@ -1,0 +1,131 @@
+body {
+    background: #0A0025;
+}
+.container {
+    margin-top: 40px;
+}
+.myPicImp, .myPic {
+    transition: width 1s ease, height 1s ease, transform 1s ease;
+    -webkit-transition: width 1s ease, height 1s ease, transform 1s ease;
+    -o-transition: width 1s ease, height 1s ease, transform 1s ease;
+    -moz-transition: width 1s ease, height 1s ease, transform 1s ease;
+}
+
+/* Interactive bar */
+#bar {
+    position: absolute;
+    background-color: aliceblue;
+    top: 15px;
+    width: 95%;
+    z-index: -1;
+    justify-self: center;
+}
+.container {
+    position: relative;
+}
+.year {
+    font-size: x-small;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: #0A0025;
+    border-color: #57FFFF;
+    color: #57FFFF;
+}
+.year:hover {
+    background-color: #57FFFF;
+    color: black;
+}
+.activeyear {
+    font-size: small;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #57FFFF;
+    color: black;
+    box-shadow: 0px 4px 10px 0px #57ffff46;
+}
+.btn-primary {
+    background-color: #57FFFF;
+    border-color: #57FFFF;
+    margin-top: 2px;
+}
+.btn-primary:hover {
+    background-color: #1ed4d4;
+}
+
+/* Important Tiles */
+.myTileBackImp {
+    background-color: aqua;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 140px;
+    width: 140px;
+}
+.myPicImp {
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px 2px #57ffff46;
+    height: 140px;
+    width: 140px;
+}
+.myPicImp:hover {
+    box-shadow: 0px 5px 10px 2px #00000033;
+    height: 80px;
+    width: 80px;
+    transform: translateY(25px);
+}
+
+/* Tiles */
+.myTileBack {
+    background-color: aqua;
+    position: relative;
+    border-radius: 10px;
+    margin-top: 30px;
+    height: 120px;
+    width: 120px;
+}
+.myPic {
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px 2px #57ffff46;
+    height: 120px;
+    width: 120px;
+}
+.myPic:hover {
+    box-shadow: 0px 5px 10px 2px #00000033;
+    height: 60px;
+    width: 60px;
+    transform: translateY(22px);
+}
+i {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+/* Miscelleaneous */
+.myName, .myPosition {
+    font-size: small;
+    display: block;
+}
+.badge {
+    background-color: #57FFFF;
+    color: black;
+}
+a {
+    color: black;
+}
+
+@media only screen and (max-width: 576px) {
+    .disappear {
+        display: none;
+    }
+    #bar {
+        width: 92%
+    }
+}
