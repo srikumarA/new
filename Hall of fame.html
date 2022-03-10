@@ -168,13 +168,13 @@ function display(people){
         if (person.Position=="President"||person.Position=="Vice President"||person.Position=="advisor"){
             result1+=`<!-- Important Element -->
             <div class="col-lg-2 col-md-4 col-sm-4 col-6 d-flex justify-content-center" id=${person.Position}> 
-            <img class="myPicImp" src="${person.Photo}">
             <div class="myTileBackImp d-flex flex-column justify-content-between">
                 <div class="d-flex justify-content-center">
-                    <a href=""><i class="fa fa-address-card-o"></i></a>
-                    <a href=""><i class="fa fa-linkedin"></i></a>
-                    <a href=""><i class="fa fa-github"></i></a>
+                    <a href="mailto:${person.Email}"><i class="fa fa-address-card-o"></i></a>
+                    <a href="${person.Linkedin_id}"><i class="fa fa-linkedin"></i></a>
+                    <a href="${person.GitHub_id}"><i class="fa fa-github"></i></a>
                 </div>
+            <img class="myPicImp" src="${person.Photo}">
             <div class="text-center">
                 <span class="myName">${person.Name}</span>
                 <span class="myPosition">${person.Position}</span>
@@ -182,16 +182,16 @@ function display(people){
             </div>
             </div>`;
             peopleDOM.innerHTML=result1;}
-        else if (person.Position=="lead"){
+        else if (person.Position=="lead"||person.Position=="Lead"){
             result2+=` <!-- Element -->
             <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center">
-                <img class="myPic" src="${person.Photo}">
                 <div class="myTileBack d-flex flex-column justify-content-between">
                     <div class="d-flex justify-content-center">
-                        <a href=""><i class="fa fa-address-card-o"></i></a>
-                        <a href=""><i class="fa fa-linkedin"></i></a>
-                        <a href=""><i class="fa fa-github"></i></a>
+                        <a href="mailto:${person.Email}"><i class="fa fa-address-card-o"></i></a>
+                        <a href="${person.Linkedin_id}"><i class="fa fa-linkedin"></i></a>
+                        <a href="${person.GitHub_id}"><i class="fa fa-github"></i></a>
                     </div>
+                    <img class="myPic" src="${person.Photo}">
                     <div class="text-center">
                         <span class="myName">${person.Name}</span>
                         <span class="myPosition">${person.Department}</span>
@@ -200,16 +200,16 @@ function display(people){
             </div>`;
             peopleDOM2.innerHTML=result2;
         }
-        else if(person.Position=="member"){
+        else if(person.Position=="member"||person.Position=="Member"){
             result3+=` <!-- Element -->
             <div class="col-lg-2 col-sm-3 col-4 d-flex justify-content-center">
-                <img class="myPic" src="${person.Photo}">
                 <div class="myTileBack d-flex flex-column justify-content-between">
                     <div class="d-flex justify-content-center">
-                        <a href=""><i class="fa fa-address-card-o"></i></a>
-                        <a href=""><i class="fa fa-linkedin"></i></a>
-                        <a href=""><i class="fa fa-github"></i></a>
+                        <a href="mailto:${person.Email}"><i class="fa fa-address-card-o"></i></a>
+                        <a href="${person.Linkedin_id}"><i class="fa fa-linkedin"></i></a>
+                        <a href="${person.GitHub_id}"><i class="fa fa-github"></i></a>
                     </div>
+                    <img class="myPic" src="${person.Photo}">
                     <div class="text-center">
                         <span class="myName">${person.Name}</span>
                         <span class="myPosition">${person.Department}</span>
